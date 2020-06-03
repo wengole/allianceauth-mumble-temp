@@ -58,7 +58,7 @@ def link(request, token, link_ref):
     except MultipleObjectsReturned:
         pass # authenticator woont care... but the DB will be unhappy.
 
-    username = "[{{char.corporation_ticker}}] {{char.character_name}}".format(char=char)
+    username = "[{char.corporation_ticker}] {char.character_name}".format(char=char)
 
     connect_url = "{}:{}@{}".format(urllib.parse.quote(username, safe=""), link_ref, settings.MUMBLE_URL)
 
