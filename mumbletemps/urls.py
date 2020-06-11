@@ -1,13 +1,11 @@
 from django.urls import path
-from django.conf.urls import url
 
 from . import views
 
-
-app_name = 'mumbletemps'
+app_name = "mumbletemps"
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    url(r'^join/(?P<link_ref>[\w\-]+)/$', views.link, name='join'),
-    url(r'^nuke/(?P<link_ref>[\w\-]+)/$', views.nuke, name='nuke'),
+    path("", views.Index.as_view(), name="index"),
+    path("join/<link_ref>/", views.TempLinkLogin.as_view(), name="join"),
+    path("delete/<link_ref>/", views.DeleteTempLink.as_view(), name="delete"),
 ]

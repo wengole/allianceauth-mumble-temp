@@ -3,6 +3,7 @@
 {% load humanize %}
 {% load static %}
 {% load timetags %}
+{% load bootstrap %}
 
 {% block create %}
     <div class="col-md-6">
@@ -21,16 +22,10 @@
             </div>
             <div class="panel-body text-center">  
                 <p>Your link will be displayed on the next page for easy copy and paste</p>
-                <form action="/mumbletemps/" method="post">
+                <form action="{% url "mumbletemps:index" %}" method="post">
                     {% csrf_token %}
-                    <label for="time">Duration (hours)</label>
-                    <select class="form-control" name="time">
-                        <option value="3">3</option>
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                      </select>           
-                    <br>         
+                    {{ form|bootstrap }}
+                    <br>
                     <input class="btn btn-primary col-md-12" type="submit" value="OK">
                 </form>
             </div>
@@ -72,7 +67,7 @@
                             <td class="text-center">{{lnk.link_ref}}</td>
                             <td class="text-center" id="countdown{{lnk.link_ref}}"></td>
                             <td class="text-center"><button class="btn btn-info" id="clipboard-{{lnk.link_ref}}" data-clipboard-text="{{ request.scheme }}://{{request.get_host}}{% url 'mumbletemps:join' lnk.link_ref %}">Copy to Clipboard!</button></td>
-                            <td class="text-center"><a class="btn btn-danger" href="{% url 'mumbletemps:nuke' lnk.link_ref %}">Nuke Link!</a></td>
+                            <td class="text-center"><a class="btn btn-danger" href="{% url 'mumbletemps:delete' lnk.link_ref %}">Delete Link!</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
