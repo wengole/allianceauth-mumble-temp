@@ -38,7 +38,7 @@
                         <a class="btn btn-primary" href="mumble://{{ connect_url }}">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Icons_mumble.svg/400px-Icons_mumble.svg.png"
                                  alt="Mumble" height="64" width="64" style="margin: 15px;">
-                            <span style="margin: 15px;">Click to Join Mumble as: <b>{{ temp_user.name }}</b></span><br>
+                            <span style="margin: 15px;">Click to Join Mumble as: <b>{{ temp_user.username }}</b></span><br>
                         </a>
                     {% else %}
                         <a href="{% url "mumbletemps:join" link.link_ref %}?sso=True">
