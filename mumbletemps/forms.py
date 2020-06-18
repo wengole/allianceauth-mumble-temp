@@ -4,7 +4,7 @@ from mumbletemps import app_settings
 
 
 class TempLinkCreateForm(forms.Form):
-    DURATIONS = ((3, 3), (6, 6), (12, 2), (24, 24))
+    DURATIONS = ((3, 3), (6, 6), (12, 12), (24, 24))
 
     duration = forms.ChoiceField(choices=DURATIONS)
 
