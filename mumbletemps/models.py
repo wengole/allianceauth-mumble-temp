@@ -26,6 +26,9 @@ class TempUser(models.Model):
     )
     password = models.CharField(max_length=20, help_text="Temporary token")
     expires = models.IntegerField(help_text="Unix timestamp when token expires")
+    temp_link = models.ForeignKey(
+        "TempLink", on_delete=models.CASCADE, related_name="users", null=True
+    )
 
     def __str__(self):
         return f"Temp User: {self.username}"

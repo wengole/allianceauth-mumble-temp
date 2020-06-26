@@ -102,6 +102,7 @@ class TempLinkLogin(generic.FormView):
         if not created:
             temp_user.password = password
             temp_user.expires = link.expires
+            temp_user.temp_link = link
             temp_user.save()
 
         connect_url = f"{display_name}:{password}@{settings.MUMBLE_URL}"
