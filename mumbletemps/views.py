@@ -97,7 +97,7 @@ class TempLinkLogin(generic.FormView):
         password = get_random_string(15)
         temp_user, created = TempUser.objects.get_or_create(
             username=display_name,
-            defaults=dict(password=password, expires=link.expires),
+            defaults=dict(password=password, expires=link.expires, temp_link=link),
         )
         if not created:
             temp_user.password = password
